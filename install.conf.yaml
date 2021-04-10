@@ -1,20 +1,16 @@
 - defaults:
     link:
+      create: true
       relink: true
 
 - clean: ['~']
 
 - link:
-  ~/.tmux.conf:
-    create: true
-    path: tmux.conf
-  ~/.config/nvim:
-    create: true
-    path: nvim
-
-# - create:
-#     - ~/downloads
-#     - ~/.vim/undo-history
+    ~/.config/nvim: nvim
+    ~/.tmux.conf: tmux.conf
+    ~/.config/kitty/kitty.conf: kitty.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - chmod 777 ./git-aliases.sh
+  - ./git-aliases.sh
