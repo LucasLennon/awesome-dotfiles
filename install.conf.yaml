@@ -7,10 +7,10 @@
 - link:
 #    ~/.tmux.conf:
 #     create: true
-#     path: ../tmux.conf
+#     path: tmux.conf
     ~/.config/nvim:
       create: true
-      path: ../nvim
+      path: nvim
 
 # - create:
 #     - ~/downloads
