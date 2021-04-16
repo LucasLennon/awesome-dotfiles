@@ -7,3 +7,5 @@ To install just run on install.
 ```
 ./install
 ```
+
+About the bashrc config inside this repo, just remember to make source then on the main bashrc file. You probably will use Oh My Bash to improve the visuals.
