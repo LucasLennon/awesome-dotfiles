@@ -6,11 +6,10 @@
 - clean: ['~']
 
 - link:
+    ~/.gitconfig: gitconfig
     ~/.config/nvim: nvim
     ~/.tmux.conf: tmux.conf
     ~/.config/kitty/kitty.conf: kitty.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - chmod 777 ./git-aliases.sh
-  - ./git-aliases.sh

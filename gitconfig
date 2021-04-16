@@ -1,0 +1,23 @@
+[user]
+	name = LucasLennon
+	email = lucasespir@gmail.com
+[github]
+	email = lucasespir@gmail.com
+	name = LucasLennon
+[alias]
+	main = checkout main
+	go = checkout
+	lbr = branch -a
+	nbr = branch -m
+	cm = commit
+	cmm = commit -m
+	cma = commit --ammend
+	st = status
+	df = diff
+	ps = push
+	psf = push --force
+	pl = pull
+	pso = push -u origin
+	br = branch
+[init]
+	defaultBranch = main
