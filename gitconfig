@@ -22,5 +22,8 @@
 	fc = fetch
 	fca = fetch --all
 	rhh = reset HEAD --hard
+	rbm = rebase origin/main
 [init]
 	defaultBranch = main
+[pull]
+	rebase = true
