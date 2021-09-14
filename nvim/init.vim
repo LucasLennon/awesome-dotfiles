@@ -58,18 +58,22 @@ let g:UltiSnipsEditSplit="vertical"
 " ale
 " let g:ale_linters = []
 " let g:ale_disable_lsp = 1
+" \  'vue': ['eslint','vls'],
 let g:ale_linters = {
 \  'javascript': ['eslint','tsserver'],
 \  'typescript': ['eslint','tsserver'],
+\  'javascriptreact': ['eslint','tsserver'],
 \  'typescriptreact': ['eslint','tsserver'],
 \  'json': ['jsonlint'],
 \  'jsonc': ['jsonlint'],
 \}
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_completion_autoimport = 1
+" \  'vue': ['eslint'],
 let g:ale_fixers = {
 \  'javascript': ['eslint'],
 \  'typescript': ['eslint'],
+\  'javascriptreact': ['eslint'],
 \  'typescriptreact': ['eslint'],
 \  'html': ['html-beautify'],
 \  'json': ['fixjson', 'prettier'],
@@ -168,8 +172,8 @@ let g:javascript_conceal_arrow_function       = "⇒"
 " let g:javascript_conceal_noarg_arrow_function = "🞅"
 " let g:javascript_conceal_underscore_arrow_function = "🞅"
 let g:jsx_ext_required = 1
-let g:python2_host_prog = '/home/lucaslennon/.pyenv/versions/2.7.18/bin/python'
-let g:python3_host_prog = '/usr/bin/python3.9'
+let g:python_host_prog = '~/.asdf/shims/python'
+let g:python3_host_prog = '~/.asdf/shims/python3.9'
 let g:airline_theme='onedark'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:startify_change_to_dir = 0
@@ -179,3 +183,8 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.erb'
 
 " set autochdir
 " set autoread
+set foldmethod=syntax
+set nofoldenable
+
+" Cocnvim
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
