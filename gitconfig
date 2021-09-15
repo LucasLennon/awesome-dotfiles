@@ -6,10 +6,13 @@
 	name = LucasLennon
 [alias]
 	main = checkout main
+	all = add .
+	rall = remove .
 	go = checkout
 	br = branch
 	lbr = branch -a
 	nbr = branch -m
+	lg = log
 	cm = commit
 	cmm = commit -m
 	cma = commit --ammend
@@ -22,7 +25,8 @@
 	fc = fetch
 	fca = fetch --all
 	rhh = reset HEAD --hard
-	rbm = rebase origin/main
+	rbm = pull origin/main --rebase
+	rbc = rebase --continue
 [init]
 	defaultBranch = main
 [pull]
