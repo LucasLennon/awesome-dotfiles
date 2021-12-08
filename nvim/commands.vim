@@ -5,22 +5,24 @@ nnoremap N Nzzzv
 "" Abbreviations
 "*****************************************************************************
 "" no one is really happy until you have this shortcuts
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
+nnoremap W :w<CR>
+nnoremap W! :w!<CR>
+nnoremap WA :wa<CR>
+nnoremap WA! :wa!<CR>
+nnoremap WQ :wq<CR>
+nnoremap Q :q<CR>
+nnoremap Q! :q!<CR>
+nnoremap QA :qa<CR>
+nnoremap QA! :qa!<CR>
+nnoremap WQA :wqa<CR>
+nnoremap WQA! :wqa!<CR>
 
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 " grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
+"nnoremap <silent> <leader>f :Rgrep<CR>
+nnoremap <silent> <leader>f :Ag<CR>
 
 " terminal emulation
 nnoremap <silent> <leader>sh :terminal<CR>
@@ -123,3 +125,6 @@ vnoremap <BS> <nop>
 
 nnoremap <Leader><C-P> :GFiles<CR>
 nnoremap <C-P> :Files<CR>
+
+" noremap <Leader>rn :set relativenumber!<CR>
+noremap <Leader>wrd :vertical resize 80<CR>

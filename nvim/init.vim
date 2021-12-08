@@ -56,10 +56,8 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 " ale
-" let g:ale_linters = []
-" let g:ale_disable_lsp = 1
-" \  'vue': ['eslint','vls'],
 let g:ale_linters = {
+\  'vue': ['eslint','vls'],
 \  'javascript': ['eslint','tsserver'],
 \  'typescript': ['eslint','tsserver'],
 \  'javascriptreact': ['eslint','tsserver'],
@@ -69,8 +67,8 @@ let g:ale_linters = {
 \}
 let g:ale_completion_enabled = 0
 let g:ale_completion_autoimport = 1
-" \  'vue': ['eslint'],
 let g:ale_fixers = {
+\  'vue': ['eslint'],
 \  'javascript': ['eslint'],
 \  'typescript': ['eslint'],
 \  'javascriptreact': ['eslint'],
@@ -159,18 +157,19 @@ endif
 
 " Custom Stuff
 let g:javascript_plugin_jsdoc = 1
-let g:javascript_conceal_function             = "ƒ"
-" let g:javascript_conceal_null                 = "ø"
-" let g:javascript_conceal_this                 = "@"
-" let g:javascript_conceal_return               = "r"
-" let g:javascript_conceal_undefined            = "¿"
-" let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_arrow_function       = "⇒"
-" let g:javascript_conceal_prototype            = "¶"
-" let g:javascript_conceal_static               = "•"
-" let g:javascript_conceal_super                = "Ω"
-" let g:javascript_conceal_noarg_arrow_function = "🞅"
-" let g:javascript_conceal_underscore_arrow_function = "🞅"
+"let g:javascript_conceal_function             = "ƒ"
+"let g:javascript_conceal_null                 = "ø"
+"let g:javascript_conceal_this                 = "@"
+"let g:javascript_conceal_return               = "r"
+"let g:javascript_conceal_undefined            = "¿"
+"let g:javascript_conceal_NaN                  = "ℕ"
+"let g:javascript_conceal_arrow_function       = "⇒"
+"let g:javascript_conceal_prototype            = "¶"
+"let g:javascript_conceal_static               = "•"
+"let g:javascript_conceal_super                = "Ω"
+"let g:javascript_conceal_noarg_arrow_function = "🞅"
+"let g:javascript_conceal_underscore_arrow_function = "🞅"
+
 let g:jsx_ext_required = 1
 let g:python_host_prog = '~/.asdf/shims/python'
 let g:python3_host_prog = '~/.asdf/shims/python3.9'
@@ -188,3 +187,61 @@ set nofoldenable
 
 " Cocnvim
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" NerdCommenter for Vue
+"let g:ft = ''
+"fu! NERDCommenter_before()
+    "if &ft == 'vue'
+        "let g:ft = 'vue'
+        "let stack = synstack(line('.'), col('.'))
+        "if len(stack) > 0
+            "let syn = synIDattr((stack)[0], 'name')
+            "if len(syn) > 0
+                "let syn = tolower(syn)
+                "exe 'setf '.syn
+            "endif
+        "endif
+    "endif
+"endfu
+"fu! NERDCommenter_after()
+    "if g:ft == 'vue'
+        "setf vue
+        "let g:ft = ''
+    "endif
+"endfu
+
+" Vim Vue
+"let g:vue_pre_processors = 'detect_on_enter'
+
+
+
+" Vim Vue Plugin
+" let g:vim_vue_plugin_config = {
+" \'syntax': {
+" \   'template': ['html'],
+" \   'script': ['javascript'],
+" \   'style': ['css'],
+" \},
+" \'full_syntax': [],
+" \'initial_indent': [],
+" \'attribute': 0,
+" \'keyword': 0,
+" \'foldexpr': 0,
+" \'debug': 0,
+" \}
+
+" function! OnChangeVueSyntax(syntax)
+"   echom 'Syntax is '.a:syntax
+"   if a:syntax == 'html'
+"     setlocal commentstring=<!--%s-->
+"     setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+"   elseif a:syntax =~ 'css'
+"     setlocal comments=s1:/*,mb:*,ex:*/ commentstring&
+"   else
+"     setlocal commentstring=//%s
+"     setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+"   endif
+" endfunction
+
+" Hexokinase
+" let g:Hexokinase_highlighters = ['virtual']

@@ -7,15 +7,19 @@
 [alias]
 	main = checkout main
 	all = add .
-	rall = remove .
+	rall = reset .
 	go = checkout
 	br = branch
 	lbr = branch -a
 	nbr = branch -m
+	brd = branch -d
 	lg = log
 	cm = commit
 	cmm = commit -m
-	cma = commit --ammend
+	cma = commit --amend
+	sh = stash
+	sha = stash apply
+	shl = stash list
 	st = status
 	df = diff
 	ps = push
@@ -24,8 +28,10 @@
 	pso = push -u origin
 	fc = fetch
 	fca = fetch --all
+	rf = checkout HEAD
 	rhh = reset HEAD --hard
-	rbm = pull origin/main --rebase
+	rbd = pull origin develop --rebase
+	rbm = pull origin master --rebase
 	rbc = rebase --continue
 [init]
 	defaultBranch = main

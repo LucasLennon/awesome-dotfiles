@@ -40,7 +40,8 @@ let g:session_command_aliases = 1
 set inccommand=nosplit
 syntax on
 set ruler
-set number
+" set number
+set relativenumber
 let no_buffers_menu=1
 colorscheme onedark
 set mousemodel=popup
