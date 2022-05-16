@@ -7,13 +7,6 @@ source ~/.config/nvim/commands.vim
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
-" vim-airline
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
@@ -216,32 +209,19 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
 " Vim Vue Plugin
-" let g:vim_vue_plugin_config = {
-" \'syntax': {
-" \   'template': ['html'],
-" \   'script': ['javascript'],
-" \   'style': ['css'],
-" \},
-" \'full_syntax': [],
-" \'initial_indent': [],
-" \'attribute': 0,
-" \'keyword': 0,
-" \'foldexpr': 0,
-" \'debug': 0,
-" \}
-
-" function! OnChangeVueSyntax(syntax)
-"   echom 'Syntax is '.a:syntax
-"   if a:syntax == 'html'
-"     setlocal commentstring=<!--%s-->
-"     setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
-"   elseif a:syntax =~ 'css'
-"     setlocal comments=s1:/*,mb:*,ex:*/ commentstring&
-"   else
-"     setlocal commentstring=//%s
-"     setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
-"   endif
-" endfunction
+let g:vim_vue_plugin_config = {
+\'syntax': {
+\   'template': ['html'],
+\   'script': ['javascript'],
+\   'style': ['css'],
+\},
+\'full_syntax': [],
+\'initial_indent': [],
+\'attribute': 0,
+\'keyword': 0,
+\'foldexpr': 0,
+\'debug': 0,
+\}
 
 " Hexokinase
 " let g:Hexokinase_highlighters = ['virtual']

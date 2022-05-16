@@ -1,5 +1,11 @@
 " Required:
 filetype plugin indent on
+
+" set termguicolors
+" set background=light
+colorscheme onedark
+" colorscheme lucius
+
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
@@ -43,7 +49,6 @@ set ruler
 " set number
 set relativenumber
 let no_buffers_menu=1
-colorscheme onedark
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
@@ -111,3 +116,11 @@ endif
 " endif
 
 set autoread
+
+" vim-airline
+let g:airline_theme = 'powerlineish'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1

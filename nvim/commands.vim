@@ -40,14 +40,14 @@ command! FixWhitespace :%s/\s\+$//e
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 "" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
+" noremap <Leader>ga :Gwrite<CR>
+" noremap <Leader>gc :Gcommit<CR>
+" noremap <Leader>gsh :Gpush<CR>
+" noremap <Leader>gll :Gpull<CR>
+" noremap <Leader>gs :Gstatus<CR>
+" noremap <Leader>gb :Gblame<CR>
+" noremap <Leader>gd :Gvdiff<CR>
+" noremap <Leader>gr :Gremove<CR>
 " session management
 nnoremap <leader>so :OpenSession<Space>
 nnoremap <leader>ss :SaveSession<Space>
@@ -90,10 +90,10 @@ if has('macunix')
 endif
 
 "" Buffer nav
-noremap <leader>z :bp<CR>
 noremap <leader>q :bp<CR>
-noremap <leader>x :bn<CR>
 noremap <leader>w :bn<CR>
+" noremap <leader>z :bp<CR>
+" noremap <leader>x :bn<CR>
 "" Close buffer
 " noremap <leader>c :bd<CR>
 map <Leader>c :bp<bar>sp<bar>bn<bar>bd<CR>
@@ -125,6 +125,9 @@ vnoremap <BS> <nop>
 
 nnoremap <Leader><C-P> :GFiles<CR>
 nnoremap <C-P> :Files<CR>
+
+"Close all buffers
+nnoremap <Leader>bca :bufdo bwipeout<CR>
 
 " noremap <Leader>rn :set relativenumber!<CR>
 noremap <Leader>wrd :vertical resize 80<CR>

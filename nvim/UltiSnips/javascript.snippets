@@ -1,0 +1,28 @@
+snippet story "Storybook base format"
+import $1 from './index.vue';
+
+export default {
+  title: '$2/$1',
+  component: $1
+};
+
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { $1 },
+  template: '<$1 v-bind="$props"></$1>',
+});
+
+export const Default = Template.bind({});
+
+Default.args = {};
+endsnippet
+
+snippet vuex-module "Basic Vuex module"
+export default {
+  namespaced: true,
+  state: {},
+  mutations: {},
+  actions: {},
+  getters: {},
+}
+endsnippet

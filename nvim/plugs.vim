@@ -22,11 +22,13 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 " Themes
 Plug 'joshdick/onedark.vim'
+" Plug 'jonathanfilip/vim-lucius'
 
 Plug 'scrooloose/nerdtree'
-" Plug 'tpope/vim-commentary'
 Plug 'tomtom/tcomment_vim'
-"Plug 'scrooloose/nerdcommenter'
+" Plug 'tpope/vim-commentary'
+" Plug 'scrooloose/nerdcommenter'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -37,7 +39,7 @@ Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 Plug 'dense-analysis/ale'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 
@@ -58,40 +60,27 @@ if exists('make')
         let g:make = 'make'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
-"" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
 "" Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-"Plug 'mlaursen/vim-react-snippets'
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
 " html
 "" HTML Bundle
-Plug 'hail2u/vim-css3-syntax'
-" Plug 'gko/vim-coloresque'
 Plug 'lilydjwg/colorizer'
 Plug 'amadeus/vim-convert-color-to'
-" Plug 'rrethy/vim-hexokinase'
-Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
-" javascript
-"" Javascript Bundle
-" Plug 'jelera/vim-javascript-syntax'
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-" typescript
-" Plug 'leafgarland/typescript-vim'
-" Plug 'HerringtonDarkholme/yats.vim'
 " vuejs
 " Plug 'Quramy/tsuquyomi'
 " Plug 'Quramy/tsuquyomi-vue'
 Plug 'posva/vim-vue'
-" Plug 'leafoftree/vim-vue-plugin'
+
 Plug 'mhinz/vim-startify'
+
+" Tmux Integration
 Plug 'christoomey/vim-tmux-navigator'
+
 if filereadable(expand("~/.config/nvim/local_bundles.vim"))
   source ~/.config/nvim/local_bundles.vim
 endif
