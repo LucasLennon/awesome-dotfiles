@@ -50,7 +50,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 " ale
 let g:ale_linters = {
-\  'vue': ['eslint','vls'],
+\  'vue': ['eslint','vls', 'volar'],
 \  'javascript': ['eslint','tsserver'],
 \  'typescript': ['eslint','tsserver'],
 \  'javascriptreact': ['eslint','tsserver'],
@@ -165,7 +165,7 @@ let g:javascript_plugin_jsdoc = 1
 
 let g:jsx_ext_required = 1
 let g:python_host_prog = '~/.asdf/shims/python'
-let g:python3_host_prog = '~/.asdf/shims/python3.9'
+let g:python3_host_prog = '~/.asdf/shims/python3.10'
 let g:airline_theme='onedark'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:startify_change_to_dir = 0
