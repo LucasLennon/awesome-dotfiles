@@ -1,5 +1,5 @@
 # Path to your oh-my-bash installation.
-export OSH=/home/lucaslennon/.oh-my-bash
+export OSH=/Users/lucaslennon/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
@@ -102,7 +102,8 @@ source $OSH/oh-my-bash.sh
 # alias ohmybash="mate ~/.oh-my-bash"
 
 # autojump
-source /usr/share/autojump/autojump.bash
+
+# source /usr/share/autojump/autojump.bash
 
 export EDITOR="nvim"
 export VISUAL="nvim"
