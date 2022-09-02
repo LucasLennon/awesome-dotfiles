@@ -1,6 +1,7 @@
 [user]
 	name = lucas.esperidiao
-	email = lucas.esperidiao@olist.com
+	email = lucasespir@gmail.com
+	signingkey = A61077E11809A57DB9B10B5D4BFC3990EF23C97F
 [github]
 	email = lucasespir@gmail.com
 	name = LucasLennon
@@ -25,15 +26,18 @@
 	ps = push
 	psf = push --force
 	pl = pull
-	pso = push -u origin
+	pso = "!f() { git push -u origin $(git branch --show-current); }; f"
 	fc = fetch
 	fca = fetch --all
 	rf = checkout HEAD
 	rhh = reset HEAD --hard
-	rbd = pull origin develop --rebase
-	rbm = pull origin master --rebase
+	rb = "!f() { git pull origin $1 --rebase; }; f"
 	rbc = rebase --continue
 [init]
 	defaultBranch = main
 [pull]
 	rebase = true
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true

@@ -1,6 +1,8 @@
-source ~/.config/nvim/plugs.vim
+lua require 'init'
 source ~/.config/nvim/theme.vim
-source ~/.config/nvim/commands.vim
+lua require 'commands'
+" source ~/.config/nvim/plugs.vim
+" source ~/.config/nvim/commands.vim
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -44,34 +46,34 @@ augroup vimrc-make-cmake
 augroup END
 
 " snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" let g:UltiSnipsEditSplit="vertical"
 " ale
-let g:ale_linters = {
-\  'vue': ['eslint','vls'],
-\  'javascript': ['eslint','tsserver'],
-\  'typescript': ['eslint','tsserver'],
-\  'javascriptreact': ['eslint','tsserver'],
-\  'typescriptreact': ['eslint','tsserver'],
-\  'json': ['jsonlint'],
-\  'jsonc': ['jsonlint'],
-\}
-let g:ale_completion_enabled = 0
-let g:ale_completion_autoimport = 1
-let g:ale_fixers = {
-\  'vue': ['eslint'],
-\  'javascript': ['eslint'],
-\  'typescript': ['eslint'],
-\  'javascriptreact': ['eslint'],
-\  'typescriptreact': ['eslint'],
-\  'html': ['html-beautify'],
-\  'json': ['fixjson', 'prettier'],
-\  'jsonc': ['fixjson', 'prettier'],
-\  '*': ['remove_trailing_lines', 'trim_whitespace'],
-\ }
-let g:ale_fix_on_save = 1
+" let g:ale_linters = {
+" \  'vue': ['eslint','vls', 'volar'],
+" \  'javascript': ['eslint','tsserver'],
+" \  'typescript': ['eslint','tsserver'],
+" \  'javascriptreact': ['eslint','tsserver'],
+" \  'typescriptreact': ['eslint','tsserver'],
+" \  'json': ['jsonlint'],
+" \  'jsonc': ['jsonlint'],
+" \}
+" let g:ale_completion_enabled = 0
+" let g:ale_completion_autoimport = 1
+" let g:ale_fixers = {
+" \  'vue': ['eslint'],
+" \  'javascript': ['eslint'],
+" \  'typescript': ['eslint'],
+" \  'javascriptreact': ['eslint'],
+" \  'typescriptreact': ['eslint'],
+" \  'html': ['html-beautify'],
+" \  'json': ['fixjson', 'prettier'],
+" \  'jsonc': ['fixjson', 'prettier'],
+" \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+" \ }
+" let g:ale_fix_on_save = 1
 " let g:ale_javascript_eslint_options = {}
 
 " Tagbar
@@ -165,7 +167,7 @@ let g:javascript_plugin_jsdoc = 1
 
 let g:jsx_ext_required = 1
 let g:python_host_prog = '~/.asdf/shims/python'
-let g:python3_host_prog = '~/.asdf/shims/python3.9'
+let g:python3_host_prog = '~/.asdf/shims/python3.10'
 let g:airline_theme='onedark'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:startify_change_to_dir = 0
@@ -209,19 +211,19 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
 " Vim Vue Plugin
-let g:vim_vue_plugin_config = {
-\'syntax': {
-\   'template': ['html'],
-\   'script': ['javascript'],
-\   'style': ['css'],
-\},
-\'full_syntax': [],
-\'initial_indent': [],
-\'attribute': 0,
-\'keyword': 0,
-\'foldexpr': 0,
-\'debug': 0,
-\}
+" let g:vim_vue_plugin_config = {
+" \'syntax': {
+" \   'template': ['html'],
+" \   'script': ['javascript'],
+" \   'style': ['css'],
+" \},
+" \'full_syntax': [],
+" \'initial_indent': [],
+" \'attribute': 0,
+" \'keyword': 0,
+" \'foldexpr': 0,
+" \'debug': 0,
+" \}
 
 " Hexokinase
 " let g:Hexokinase_highlighters = ['virtual']

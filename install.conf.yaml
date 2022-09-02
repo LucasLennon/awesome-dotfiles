@@ -14,17 +14,3 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"]
-  - [git clone https://github.com/asdf-vm/asdf.git ~/.asdf]
-  - [asdf plugin add python]
-  - [asdf plugin add nodejs]
-  - [asdf plugin add yarn]
-  - [asdf plugin add ruby]
-  - [asdf install nodejs latest]
-  - [asdf install python latest]
-  - [asdf install yarn latest]
-  - [asdf install ruby latest]
-  - [asdf global nodejs latest]
-  - [asdf global python latest]
-  - [asdf global yarn latest]
-  - [asdf global ruby latest]

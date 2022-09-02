@@ -65,19 +65,21 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>e :FZF -m<CR>
 "Recovery commands from history through FZF
-nmap <leader>y :History:<CR>
+"" Open current line on GitHub
+" nnoremap <Leader><C-P> :GFiles<CR>
+" nnoremap <C-P> :Files<CR>
+" nnoremap <Leader>o :.Gbrowse<CR>
+" nmap <silent> <F4> :TagbarToggle<CR>
+" nnoremap <silent> <leader>b :Buffers<CR>
+" nnoremap <silent> <leader>e :FZF -m<CR>
+" nmap <leader>y :History:<CR>
 
-" nmap <A-S-e> :CocCommand eslint.executeAutofix<CR>
-nmap <A-S-e> :ALEFix<CR>
-nmap <leader>agtd :ALEGoToDefinition<CR>
-nmap <leader>ar :ALERename<CR>
-nmap <leader>aca :ALECodeAction<CR>
-nmap <leader>afr :ALEFindReferences<CR>
-
-nmap <silent> <F4> :TagbarToggle<CR>
+" nmap <A-S-e> :ALEFix<CR>
+" nmap <leader>agtd :ALEGoToDefinition<CR>
+" nmap <leader>ar :ALERename<CR>
+" nmap <leader>aca :ALECodeAction<CR>
+" nmap <leader>afr :ALEFindReferences<CR>
 
 noremap YY "+y<CR>
 noremap <leader>p "+gP<CR>
@@ -110,8 +112,6 @@ vmap > >gv
 "" Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-"" Open current line on GitHub
-nnoremap <Leader>o :.Gbrowse<CR>
 
 " Custom Configs for Hard Mode without distant keys
 " This will hopefully improve my VIM key knowledge
@@ -123,11 +123,16 @@ vnoremap <Up> <nop>
 vnoremap <Down> <nop>
 vnoremap <BS> <nop>
 
-nnoremap <Leader><C-P> :GFiles<CR>
-nnoremap <C-P> :Files<CR>
-
 "Close all buffers
 nnoremap <Leader>bca :bufdo bwipeout<CR>
 
 " noremap <Leader>rn :set relativenumber!<CR>
 noremap <Leader>wrd :vertical resize 80<CR>
+
+" Telescope stuff
+nnoremap <C-P> <cmd>Telescope git_files<cr>
+nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
