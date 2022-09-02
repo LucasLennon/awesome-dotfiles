@@ -1,138 +1,137 @@
-function remap (type, key, action, options)
-	return vim.keymap.set(type, key, action, options)
+local function mapkey (mode, method, action, options)
+	return vim.keymap.set(mode, method, action, options)
 end
 
-remap('n', 'n', 'nzzzv')
-remap('n', 'N', 'Nzzzv')
+mapkey('n', 'n', 'nzzzv')
+mapkey('n', 'N', 'Nzzzv')
 
 -- "*****************************************************************************
 -- "" Abbreviations
 -- "*****************************************************************************
 -- "" no one is really happy until you have this shortcuts
-remap('n', 'W', ':w<CR>')
-remap('n', 'W', ':w<CR>')
-remap('n', 'W!', ':w!<CR>')
-remap('n', 'WA', ':wa<CR>')
-remap('n', 'WA!', ':wa!<CR>')
-remap('n', 'WQ', ':wq<CR>')
-remap('n', 'Q', ':q<CR>')
-remap('n', 'Q!', ':q!<CR>')
-remap('n', 'QA', ':qa<CR>')
-remap('n', 'QA!', ':qa!<CR>')
-remap('n', 'WQA', ':wqa<CR>')
-remap('n', 'WQA!', ':wqa!<CR>')
+mapkey('n', 'W', '::w<CR>')
+mapkey('n', 'W', '::w<CR>')
+mapkey('n', 'W!', '::w!<CR>')
+mapkey('n', 'WA', '::wa<CR>')
+mapkey('n', 'WA!', '::wa!<CR>')
+mapkey('n', 'WQ', '::wq<CR>')
+mapkey('n', 'Q', '::q<CR>')
+mapkey('n', 'Q!', '::q!<CR>')
+mapkey('n', 'QA', '::qa<CR>')
+mapkey('n', 'QA!', '::qa!<CR>')
+mapkey('n', 'WQA', '::wqa<CR>')
+mapkey('n', 'WQA!', '::wqa!<CR>')
 
-remap('n', '<F2>', ':NERDTreeFind<CR>')
-remap('n', '<F3>', ':NERDTreeToggle<CR>')
-
--- " grep.vim
--- "nnoremap <leader>f :Rgrep<CR>
-remap('n', '<leader>f', ':Ag<CR>')
-
--- " terminal emulation
---remap('n', '<leader>sh', ':terminal<CR>')
---
--- "*****************************************************************************
--- "" Commands
--- "*****************************************************************************
--- " remove trailing whitespaces
--- command! FixWhitespace :%s/\s\+$//e
-
+-- mapkey('n', '<F2>', '::NERDTreeFind<CR>')
+-- mapkey('n', '<F3>', '::NERDTreeToggle<CR>')
+mapkey('n', '<F2>', ':NvimTreeFindFile<CR>')
+mapkey('n', '<F3>', ':NvimTreeToggle<CR>')
 -- "*****************************************************************************
 -- "" Mappings
 -- "*****************************************************************************
--- "" Split
-remap('n', '<Leader>h', ':<C-u>split<CR>', {remap = true})
-remap('n', '<Leader>v', ':<C-u>vsplit<CR>', {remap = true})
 -- "" Git
--- "remap('n', '<Leader>ga', ':Gwrite<CR>')
--- "remap('n', '<Leader>gc', ':Gcommit<CR>')
--- "remap('n', '<Leader>gsh', ':Gpush<CR>')
--- "remap('n', '<Leader>gll', ':Gpull<CR>')
--- "remap('n', '<Leader>gs', ':Gstatus<CR>')
--- "remap('n', '<Leader>gb', ':Gblame<CR>')
--- "remap('n', '<Leader>gd', ':Gvdiff<CR>')
--- "remap('n', '<Leader>gr', ':Gremove<CR>')
+-- "mapkey('n', '<Leader>ga', '::Gwrite<CR>')
+-- "mapkey('n', '<Leader>gc', '::Gcommit<CR>')
+-- "mapkey('n', '<Leader>gsh', '::Gpush<CR>')
+-- "mapkey('n', '<Leader>gll', '::Gpull<CR>')
+-- "mapkey('n', '<Leader>gs', '::Gstatus<CR>')
+-- "mapkey('n', '<Leader>gb', '::Gblame<CR>')
+-- "mapkey('n', '<Leader>gd', '::Gvdiff<CR>')
+-- "mapkey('n', '<Leader>gr', '::Gremove<CR>')
 -- " session management
-remap('n', '<leader>so', ':OpenSession<Space>')
-remap('n', '<leader>ss', ':SaveSession<Space>')
-remap('n', '<leader>sd', ':DeleteSession<CR>')
-remap('n', '<leader>sc', ':CloseSession<CR>')
+-- mapkey('n', '<leader>so', 'OpenSession<Space>')
+-- mapkey('n', '<leader>ss', 'SaveSession<Space>')
+-- mapkey('n', '<leader>sd', '::DeleteSession<CR>')
+-- mapkey('n', '<leader>sc', '::CloseSession<CR>')
 -- "" Tabs
-remap('n', '<Tab>', 'gt')
-remap('n', '<S-Tab>', 'gT')
-remap('n', '<S-t>', ':tabnew<CR>')
+mapkey('n', '<Tab>', 'gt')
+mapkey('n', '<S-Tab>', 'gT')
+mapkey('n', '<S-t>', '::tabnew<CR>')
 -- "" Set working directory
-remap('n', '<leader>. :lcd', '%:p:h<CR>')
+mapkey('n', '<leader>. :lcd', '::%:p:h<CR>')
 -- "" Opens an edit command with the path of the currently edited file filled in
-remap('n', '<Leader>e :e <C-R>=expand("%:p:h") . "/"', '<CR>')
+mapkey('n', '<Leader>e :e <C-R>=expand("%:p:h") . "/"', '<CR>')
 -- "" Opens a tab edit command with the path of the currently edited file filled
-remap('n', '<Leader>te :tabe <C-R>=expand("%:p:h") . "/"', '<CR>')
+mapkey('n', '<Leader>te :tabe <C-R>=expand("%:p:h") . "/"', '<CR>')
 
 -- cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-remap('n', '<leader>b', ':Buffers<CR>')
-remap('n', '<leader>e :FZF', '-m<CR>')
 -- "Recovery commands from history through FZF
--- remap('n', '<leader>y', ':History:<CR>')
+mapkey('n', '<leader>y', '::History:<CR>')
 --
--- " remap('n', '<A-S-e> :CocCommand', 'eslint.executeAutofix<CR>')
-remap('n', '<A-S-e>', ':ALEFix<CR>')
-remap('n', '<leader>agtd', ':ALEGoToDefinition<CR>')
-remap('n', '<leader>ar', ':ALERename<CR>')
-remap('n', '<leader>aca', ':ALECodeAction<CR>')
-remap('n', '<leader>afr', ':ALEFindReferences<CR>')
+-- mapkey('n', '<A-S-e>', '::ALEFix<CR>')
+-- mapkey('n', '<leader>agtd', '::ALEGoToDefinition<CR>')
+-- mapkey('n', '<leader>ar', '::ALERename<CR>')
+-- mapkey('n', '<leader>aca', '::ALECodeAction<CR>')
+-- mapkey('n', '<leader>afr', '::ALEFindReferences<CR>')
 
-remap('n', '<F4>', ':TagbarToggle<CR>')
+mapkey('n', '<F4>', '::TagbarToggle<CR>')
 
-remap('n', 'YY', '"+y<CR>')
-remap('n', '<leader>p', '"+gP<CR>')
-remap('n', 'XX', '"+x<CR>')
-
--- if has('macunix')
---   " pbcopy for OSX copy/paste
---   remap('v', '<C-x>', ':!pbcopy<CR>')
---   remap('v', '<C-c> :w', '!pbcopy<CR><CR>')
--- endif
+mapkey('n', 'YY', '::"+y<CR>')
+mapkey('n', '<leader>p', '::"+gP<CR>')
+mapkey('n', 'XX', '::"+x<CR>')
 
 -- "" Buffer nav
-remap('n', '<leader>q', ':bp<CR>')
-remap('n', '<leader>w', ':bn<CR>')
--- "remap('n', '<leader>z', ':bp<CR>')
--- "remap('n', '<leader>x', ':bn<CR>')
--- "" Close buffer
--- "remap('n', '<leader>c', ':bd<CR>')
+mapkey('n', '<leader>q', ':bp<CR>')
+mapkey('n', '<leader>w', ':bn<CR>')
+mapkey('n', '<leader>z', ':bp<CR>')
+mapkey('n', '<leader>x', ':bn<CR>')
+-- Close buffer
+mapkey('n', '<leader>c', ':bd<CR>')
 -- "" Clean search (highlight)
-remap('n', '<leader><space>', ':noh<cr>')
+mapkey('n', '<leader><space>', 'noh<cr>')
 -- "" Switching windows
-remap('n', '<C-j>', '<C-w>j')
-remap('n', '<C-k>', '<C-w>k')
-remap('n', '<C-l>', '<C-w>l')
-remap('n', '<C-h>', '<C-w>h')
+mapkey('n', '<C-j>', '<C-w>j')
+mapkey('n', '<C-k>', '<C-w>k')
+mapkey('n', '<C-l>', '<C-w>l')
+mapkey('n', '<C-h>', '<C-w>h')
 -- "" Vmap for maintain Visual Mode after shifting > and <
-remap('v', '<', '<gv')
-remap('v', '>', '>gv')
+mapkey('v', '<', '<gv')
+mapkey('v', '>', '>gv')
 -- "" Move visual block
-remap('v', 'J :m', '>+1<CR>gv=gv')
-remap('v', 'K :m', '<-2<CR>gv=gv')
--- "" Open current line on GitHub
-remap('n', '<Leader>o', ':.Gbrowse<CR>')
+mapkey('v', 'J :m', '>+1<CR>gv=gv')
+mapkey('v', 'K :m', '<-2<CR>gv=gv')
 
 -- " Custom Configs for Hard Mode without distant keys
 -- " This will hopefully improve my VIM key knowledge
-remap('n', '<BS>', '<nop>')
+mapkey('n', '<BS>', '<nop>')
 
-remap('v', '<Left>', '<nop>')
-remap('v', '<Right>', '<nop>')
-remap('v', '<Up>', '<nop>')
-remap('v', '<Down>', '<nop>')
-remap('v', '<BS>', '<nop>')
+mapkey('v', '<Left>', '<nop>')
+mapkey('v', '<Right>', '<nop>')
+mapkey('v', '<Up>', '<nop>')
+mapkey('v', '<Down>', '<nop>')
+mapkey('v', '<BS>', '<nop>')
 
-remap('n', '<Leader><C-P>', ':GFiles<CR>')
-remap('n', '<C-P>', ':Files<CR>')
+-- mapkey('n', '<Leader><C-P>', ':GFiles<CR>')
+-- mapkey('n', '<C-P>', ':Files<CR>')
+-- mapkey('n', '<Leader>o', ':.Gbrowse<CR>')
+-- mapkey('n', '<leader>b', ':Buffers<CR>')
+-- mapkey('n', '<leader>e :FZF', ':-m<CR>')
+-- mapkey('n', '<leader>f', ':Ag<CR>')
 
 -- "Close all buffers
---remap('n', '<Leader>bca :bufdo', 'bwipeout<CR>')
--- "remap('n', '<Leader>rn :set', 'relativenumber!<CR>')
-remap('n', '<Leader>wrd :vertical resize', '80<CR>')
+--mapkey('n', '<Leader>bca :bufdo', ':bwipeout<CR>')
+-- "mapkey('n', '<Leader>rn :set', ':relativenumber!<CR>')
+mapkey('n', '<C-P>', ':Telescope git_files<cr>')
+mapkey('n', '<leader>fl', ':Telescope resume<cr>')
+mapkey('n', '<leader>fd', ':Telescope lsp_definitions<cr>')
+mapkey('n', '<leader>fi', ':Telescope lsp_implementations<cr>')
+mapkey('n', '<leader>fr', ':Telescope lsp_references<cr>')
+mapkey('n', '<leader>ff', ':Telescope find_files<cr>')
+mapkey('n', '<leader>fg', ':Telescope live_grep<cr>')
+mapkey('n', '<leader>fb', ':Telescope buffers<cr>')
+mapkey('n', '<leader>fh', ':Telescope help_tags<cr>')
 
-vim.keymap.set('', '<Leader>c', ':bp<bar>sp<bar>bn<bar>bd<CR>')
+-- "" Split
+-- mapkey('n', '<Leader>h', '<C-u>split<CR>', {remap = true})
+-- mapkey('n', '<Leader>v', '<C-u>vsplit<CR>', {remap = true})
+
+-- pbcopy for OSX copy/paste
+-- if has('macunix') then
+--   mapkey('v', '<C-x>', '!pbcopy<CR>')
+--   mapkey('v', '<C-c> :w', '!pbcopy<CR><CR>')
+-- end
+
+-- vim.cmd([[
+-- 	inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+-- 	inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+-- ]])

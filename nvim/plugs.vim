@@ -42,21 +42,26 @@ Plug 'majutsushi/tagbar'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 
-Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neovim/nvim-lspconfig'
-
+" Plug 'dense-analysis/ale'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'ms-jpq/coq_nvim', { 'run': 'python3 -m coq deps' }
+Plug 'ms-jpq/coq.artifacts'
+Plug 'ms-jpq/coq.thirdparty'
 
 Plug 'tpope/vim-surround'
 Plug 'janko-m/vim-test'
 Plug 'machakann/vim-highlightedyank'
 Plug 'alvan/vim-closetag'
-if isdirectory('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
-endif
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" if isdirectory('/usr/local/opt/fzf')
+"   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+" else
+"   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+"   Plug 'junegunn/fzf.vim'
+" endif
 let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'
