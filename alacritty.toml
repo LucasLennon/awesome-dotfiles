@@ -1,0 +1,32 @@
+[font]
+size = 14 
+normal = { family = "JetBrains Mono" }
+bold = { family = "JetBrains Mono" }
+bold_italic = { family = "JetBrains Mono" }
+italic = { family = "JetBrains Mono" }
+
+[scrolling]
+history = 0
+multiplier = 0
+
+[keyboard]
+bindings = [
+	{ key = 't', mods = 'Super', action = 'ReceiveChar'},
+
+	{ key = 'n', mods = 'Command', action = 'ReceiveChar'},
+	{ key = 'n', mods = 'Super', action = 'ReceiveChar'},
+	{ key = 'n', mods = 'Alt', action = 'ReceiveChar'},
+	{ key = 'n', mods = 'Option', action = 'ReceiveChar'},
+	{ key = 'n', mods = 'Shift', action = 'ReceiveChar'},
+	{ key = 'n', mods = 'Control', action = 'ReceiveChar'},
+
+	{ key = 'p', mods = 'Command', action = 'ReceiveChar'},
+	{ key = 'p', mods = 'Super', action = 'ReceiveChar'},
+	{ key = 'p', mods = 'Alt', action = 'ReceiveChar'},
+	{ key = 'p', mods = 'Option', action = 'ReceiveChar'},
+	{ key = 'p', mods = 'Shift', action = 'ReceiveChar'},
+	{ key = 'p', mods = 'Control', action = 'ReceiveChar'},
+]
+
+[window]
+opacity = 0.75
