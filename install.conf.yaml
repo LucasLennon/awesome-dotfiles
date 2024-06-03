@@ -6,11 +6,13 @@
 - clean: ['~']
 
 - link:
-    ~/.bashrc.repo: bashrc.repo
+    # ~/.bashrc.repo: bashrc.repo
+    ~/.zshrc.repo: zshrc.repo
     ~/.gitconfig: gitconfig
-    ~/.config/nvim: nvim
     ~/.tmux.conf: tmux.conf
-    ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.config/nvim: nvim
+    ~/.config/alacritty/alacritty.toml: alacritty.toml
+    # ~/.config/kitty/kitty.conf: kitty.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

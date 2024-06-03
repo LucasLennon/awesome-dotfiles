@@ -1,7 +1,7 @@
 [user]
 	name = lucas.esperidiao
 	email = lucasespir@gmail.com
-	signingkey = A61077E11809A57DB9B10B5D4BFC3990EF23C97F
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC7JUT8UC7U9aRIoJP/IcqgKUHhV/TXlTOy7gC3pKUP3
 [github]
 	email = lucasespir@gmail.com
 	name = LucasLennon
@@ -12,7 +12,7 @@
 	go = checkout
 	br = branch
 	lbr = branch -a
-	nbr = branch -m
+	nbr = checkout -b
 	brd = branch -d
 	lg = log
 	cm = commit
@@ -39,5 +39,8 @@
 	rebase = true
 [gpg]
 	program = gpg
+	format = ssh
 [commit]
 	gpgsign = true
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
