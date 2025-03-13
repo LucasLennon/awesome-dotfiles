@@ -11,7 +11,9 @@
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.config/nvim: nvim
-    ~/.config/alacritty/alacritty.toml: alacritty.toml
+    ~/.config/wezterm.lua: wezterm.lua
+    # ~/.config/alacritty/alacritty.toml: alacritty.toml
+    # ~/.config/rio/config.toml: rio.toml
     # ~/.config/kitty/kitty.conf: kitty.conf
 
 - shell:

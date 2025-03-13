@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local snippetsConfig = require("plug-controllers/snippets")
-local lspZeroConfig = require("plug-controllers/lspZero")
+-- local lspZeroConfig = require("plug-controllers/lspZero")
 local illuminateConfig = require("plug-controllers/vim-illuminate")
 local masonConfig = require("plug-controllers/mason")
 local troubleConfig = require("plug-controllers/trouble")
@@ -21,6 +21,11 @@ local whichKeyConfig = require("plug-controllers/whichKey")
 vim.g.mapleader = ","
 
 require("lazy").setup({
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
+	{ "neovim/nvim-lspconfig" },
+	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/nvim-cmp" },
+
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
@@ -30,19 +35,24 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 	},
+	-- {
+	-- 	"baliestri/aura-theme",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function(plugin)
+	-- 		vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
+	-- 		vim.cmd([[colorscheme aura-dark]])
+	-- 	end,
+	-- },
 	{
-		"baliestri/aura-theme",
-		lazy = false,
-		priority = 1000,
-		config = function(plugin)
-			vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
-			vim.cmd([[colorscheme aura-dark]])
-		end,
+		"nvim-lualine/lualine.nvim",
+		opts = {
+			theme = "auto",
+		},
 	},
-	"nvim-lualine/lualine.nvim",
-	{
-		"akinsho/bufferline.nvim",
-	},
+	-- {
+	-- 	"akinsho/bufferline.nvim",
+	-- },
 	{
 		"pocco81/true-zen.nvim",
 		lazy = true,
@@ -69,38 +79,25 @@ require("lazy").setup({
 		end,
 	},
 	masonConfig,
-	lspZeroConfig,
+	-- lspZeroConfig,
 	{
 		"stevearc/conform.nvim",
-		opts = {},
-		config = function()
-			require("conform").setup({
-				formatters_by_ft = {
-					lua = { "stylua" },
-					javascript = { "prettier" },
-					typescript = { "prettier" },
-					vue = { "prettier" },
-				},
-				format_on_save = {
-					timeout_ms = 500,
+		opts = {
+			formatters_by_ft = {
+				typescript = {
 					lsp_format = "fallback",
 				},
-			})
-		end,
+				vue = { "eslint_d" },
+			},
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_format = "never",
+			},
+		},
 	},
 	"rafamadriz/friendly-snippets",
 	snippetsConfig,
 	troubleConfig,
-	{
-		"nvimdev/lspsaga.nvim",
-		config = function()
-			require("lspsaga").setup({})
-		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
 	"saadparwaiz1/cmp_luasnip",
 	"nvim-lua/plenary.nvim",
 	{
@@ -127,13 +124,13 @@ require("lazy").setup({
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
 	},
-	{
-		"tris203/precognition.nvim",
-		event = "VeryLazy",
-		opts = {
-			startVisible = true,
-		},
-	},
+	-- {
+	-- 	"tris203/precognition.nvim",
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 		startVisible = true,
+	-- 	},
+	-- },
 	{
 		"numToStr/Comment.nvim",
 		opts = {},
@@ -155,13 +152,45 @@ require("lazy").setup({
 	{
 		import = "configs/commands",
 	},
+	{
+		"xiyaowong/transparent.nvim",
+		config = function()
+			vim.cmd("TransparentEnable")
+		end,
+	},
+	{
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			transparent = true,
+			extensions = {
+				telescope = true,
+				notify = true,
+				mini = true,
+				cmp = true,
+			},
+		},
+		config = function()
+			vim.cmd("colorscheme cyberdream")
+			-- Add a custom keybinding to toggle the colorscheme
+			vim.api.nvim_set_keymap("n", "<leader>tt", ":CyberdreamToggleMode<CR>", { noremap = true, silent = true })
+		end,
+	},
+	{
+		"danymat/neogen",
+		config = true,
+		-- Uncomment next line if you want to follow only stable versions
+		-- version = "*"
+	},
 }, opts)
 
-require("plug-controllers/bufferline")
-require("plug-controllers/lualine")
+-- require("plug-controllers/bufferline")
+-- require("plug-controllers/lualine")
 require("plug-controllers/telescope")
 require("plug-controllers/autopairs")
 require("plug-controllers/icons")
+require("plug-controllers/lspZero")
 
 vim.diagnostic.config({
 	virtual_text = false,

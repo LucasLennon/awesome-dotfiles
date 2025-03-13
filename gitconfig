@@ -41,6 +41,6 @@
 	program = gpg
 	format = ssh
 [commit]
-	gpgsign = true
+	gpgsign = false
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign

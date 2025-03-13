@@ -1,9 +1,9 @@
 [font]
 size = 14 
-normal = { family = "JetBrains Mono" }
-bold = { family = "JetBrains Mono" }
-bold_italic = { family = "JetBrains Mono" }
-italic = { family = "JetBrains Mono" }
+normal = { family = "JetBrainsMono Nerd Font" }
+bold = { family = "JetBrainsMono Nerd Font" }
+bold_italic = { family = "JetBrainsMono Nerd Font" }
+italic = { family = "JetBrainsMono Nerd Font" }
 
 [scrolling]
 history = 0
