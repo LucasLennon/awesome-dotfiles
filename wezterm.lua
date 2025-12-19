@@ -11,28 +11,32 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
-config.window_background_opacity = 0.7
+-- config.window_background_opacity = 0.7
 -- config.window_background_opacity = 0.95
 config.colors = {
 	-- foreground = "white",
-	-- background = "#D13ABD",
+	-- background = "#FFE7DE",
 }
 -- config.window_background_gradient = {
 -- 	orientation = {
 -- 		Linear = {
--- 			angle = -45.00,
+-- 			angle = 15.00,
 -- 		},
 -- 	},
 -- 	colors = {
--- 		"#EC6EAD",
--- 		"#3494E6",
+-- 		"#373B44",
+-- 		"#4286f4",
+-- 		-- OG Colors were to strong for the Font Color  Scheme
+-- 		-- "#EC6EAD",
+-- 		-- "#3494E6",
+-- 		--
 -- 		-- "#000000",
 -- 		-- "#EEBD89",
 -- 		-- "#D13ABD",
 -- 		-- "#000000",
 -- 	},
--- 	-- interpolation = "Basis",
--- 	-- noise = 100,
+-- 	interpolation = "Basis",
+-- 	noise = 100,
 -- 	-- segment_size = 5,
 -- 	-- segment_smoothness = 0.5,
 -- }
@@ -46,6 +50,19 @@ config.mouse_wheel_scrolls_tabs = true
 
 -- Spawn a fish shell in login mode
 config.default_prog = { "/opt/homebrew/bin/fish" }
+
+config.keys = {
+	{
+		key = "t",
+		mods = "CMD",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "n",
+		mods = "CMD",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+}
 
 -- and finally, return the configuration to wezterm
 return config

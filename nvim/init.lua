@@ -12,50 +12,64 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local snippetsConfig = require("plug-controllers/snippets")
--- local lspZeroConfig = require("plug-controllers/lspZero")
-local illuminateConfig = require("plug-controllers/vim-illuminate")
-local masonConfig = require("plug-controllers/mason")
 local troubleConfig = require("plug-controllers/trouble")
 local whichKeyConfig = require("plug-controllers/whichKey")
 
 vim.g.mapleader = ","
 
 require("lazy").setup({
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
-	{ "neovim/nvim-lspconfig" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/nvim-cmp" },
-
+	{
+		"m4xshen/hardtime.nvim",
+		lazy = true,
+		event = "VeryLazy",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		opts = {},
+	},
+	{
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		lazy = true,
+		event = "VeryLazy",
+		version = "1.5.1",
+		build = "cargo build --release",
+		config = function()
+			require("blink.cmp").setup()
+		end,
+	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
+		lazy = true,
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
 	},
-	-- {
-	-- 	"baliestri/aura-theme",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function(plugin)
-	-- 		vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
-	-- 		vim.cmd([[colorscheme aura-dark]])
-	-- 	end,
-	-- },
 	{
 		"nvim-lualine/lualine.nvim",
+		lazy = false,
 		opts = {
 			theme = "auto",
 		},
+		config = function()
+			require("lualine").setup({
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_y = {},
+					lualine_z = { "searchcount", "location" },
+				},
+			})
+		end,
 	},
-	-- {
-	-- 	"akinsho/bufferline.nvim",
-	-- },
 	{
 		"pocco81/true-zen.nvim",
 		lazy = true,
+		event = "VeryLazy",
 		config = function()
 			require("true-zen").setup()
 		end,
@@ -63,6 +77,7 @@ require("lazy").setup({
 	whichKeyConfig,
 	{
 		"alexghergh/nvim-tmux-navigation",
+		lazy = true,
 		event = "VeryLazy",
 		config = function()
 			require("nvim-tmux-navigation").setup({
@@ -78,15 +93,17 @@ require("lazy").setup({
 			})
 		end,
 	},
-	masonConfig,
-	-- lspZeroConfig,
+	require("plug-controllers/mason"),
 	{
 		"stevearc/conform.nvim",
+		lazy = true,
+		event = "VeryLazy",
 		opts = {
 			formatters_by_ft = {
 				typescript = {
 					lsp_format = "fallback",
 				},
+				lua = { "stylua" },
 				vue = { "eslint_d" },
 			},
 			format_on_save = {
@@ -98,18 +115,20 @@ require("lazy").setup({
 	"rafamadriz/friendly-snippets",
 	snippetsConfig,
 	troubleConfig,
-	"saadparwaiz1/cmp_luasnip",
-	"nvim-lua/plenary.nvim",
 	{
 		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 		config = function()
 			require("telescope").load_extension("notify")
 		end,
 	},
-	illuminateConfig,
+	-- illuminateConfig,
 	require("plug-controllers/treesitter"),
 	{
 		"rcarriga/nvim-notify",
+		lazy = false,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
@@ -122,75 +141,110 @@ require("lazy").setup({
 	},
 	{
 		"windwp/nvim-autopairs",
+		lazy = true,
 		event = "VeryLazy",
 	},
-	-- {
-	-- 	"tris203/precognition.nvim",
-	-- 	event = "VeryLazy",
-	-- 	opts = {
-	-- 		startVisible = true,
-	-- 	},
-	-- },
 	{
 		"numToStr/Comment.nvim",
 		opts = {},
-		lazy = false,
+		lazy = true,
+		event = "VeryLazy",
 	},
-	"airblade/vim-gitgutter",
-	"vim-scripts/grep.vim",
+	{
+		"airblade/vim-gitgutter",
+		lazy = true,
+		event = "VeryLazy",
+	},
+	-- "vim-scripts/grep.vim",
 	{
 		"echasnovski/mini.surround",
+		lazy = true,
+		event = "VeryLazy",
 		version = "*",
 		config = function()
 			require("mini.surround").setup()
 		end,
 	},
-	-- "tpope/vim-fugitive",
-	{
-		import = "configs/theme",
-	},
-	{
-		import = "configs/commands",
-	},
 	{
 		"xiyaowong/transparent.nvim",
 		config = function()
-			vim.cmd("TransparentEnable")
+			-- vim.cmd("TransparentEnable")
+			vim.cmd("TransparentDisable")
 		end,
 	},
 	{
-		"scottmckendry/cyberdream.nvim",
+		"maxmx03/fluoromachine.nvim",
 		lazy = false,
 		priority = 1000,
-		opts = {
-			transparent = true,
-			extensions = {
-				telescope = true,
-				notify = true,
-				mini = true,
-				cmp = true,
-			},
-		},
 		config = function()
-			vim.cmd("colorscheme cyberdream")
-			-- Add a custom keybinding to toggle the colorscheme
-			vim.api.nvim_set_keymap("n", "<leader>tt", ":CyberdreamToggleMode<CR>", { noremap = true, silent = true })
+			local fm = require("fluoromachine")
+
+			fm.setup({
+				glow = true,
+				theme = "fluoromachine",
+				transparent = false,
+			})
+
+			vim.cmd.colorscheme("fluoromachine")
 		end,
 	},
+	-- {
+	-- 	"danymat/neogen",
+	-- 	lazy = true,
+	-- 	event = "VeryLazy",
+	-- 	config = true,
+	-- 	-- Uncomment next line if you want to follow only stable versions
+	-- 	-- version = "*"
+	-- },
 	{
-		"danymat/neogen",
-		config = true,
-		-- Uncomment next line if you want to follow only stable versions
-		-- version = "*"
+		"startup-nvim/startup.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
+		},
+		config = function()
+			require("startup").setup({
+				main = {
+					type = "text",
+					oldfiles_directory = false,
+					align = "center",
+					fold_section = false,
+					title = "",
+					margin = 1,
+					content = {
+						"                                   ",
+						"                                   ",
+						"                                   ",
+						"   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
+						"    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
+						"          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ",
+						"           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ",
+						"          ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ",
+						"   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ",
+						"  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ",
+						" ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
+						" ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ",
+						"      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
+						"       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
+						"                                   ",
+					},
+					highlight = "Normal",
+					default_color = "",
+					oldfiles_amount = 0,
+				},
+				parts = { "main" },
+			})
+		end,
 	},
 }, opts)
 
--- require("plug-controllers/bufferline")
--- require("plug-controllers/lualine")
+require("configs/commands")
+require("configs/theme")
 require("plug-controllers/telescope")
 require("plug-controllers/autopairs")
 require("plug-controllers/icons")
-require("plug-controllers/lspZero")
 
 vim.diagnostic.config({
 	virtual_text = false,
