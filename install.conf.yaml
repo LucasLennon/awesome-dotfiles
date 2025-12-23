@@ -10,6 +10,7 @@
     ~/.zshrc.repo: zshrc.repo
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
+    ~/.config/mise/config.toml: mise-config.toml
     ~/.config/nvim: nvim
     ~/.config/wezterm.lua: wezterm.lua
     # ~/.config/alacritty/alacritty.toml: alacritty.toml
